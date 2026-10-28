@@ -36,4 +36,4 @@ def _change_check():
     """
     Checking for the snowflake is connected with Github
     """
-    return None
+    return
