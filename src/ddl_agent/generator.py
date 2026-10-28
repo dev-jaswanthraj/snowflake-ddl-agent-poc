@@ -31,3 +31,9 @@ def generate_ddl(table: str, columns: list[dict[str, str]]) -> str:
         seen.add(name)
         definitions.append(f"    {name} {data_type}")
     return f"CREATE TABLE IF NOT EXISTS {table_name} (\n" + ",\n".join(definitions) + "\n);"
+
+def _change_check():
+    """
+    Checking for the snowflake is connected with Github
+    """
+    pass
