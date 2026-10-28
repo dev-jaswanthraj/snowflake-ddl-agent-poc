@@ -1,6 +1,6 @@
 import pytest
-from ddl_agent.generator import generate_ddl
 
+from ddl_agent.generator import generate_ddl
 
 def test_valid_ddl():
     sql = generate_ddl(
