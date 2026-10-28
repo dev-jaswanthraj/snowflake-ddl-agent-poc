@@ -1,4 +1,7 @@
+
+
 import pytest
+
 from ddl_agent.generator import generate_ddl
 
 
