@@ -1,0 +1,27 @@
+name: Code Quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install tooling
+        run: pip install -e . pytest pytest-cov ruff bandit sqlfluff
+      - name: Ruff
+        run: ruff check src tests
+      - name: Bandit
+        run: bandit -r src -ll
+      - name: Unit tests and coverage
+        run: pytest
+      - name: SQLFluff parse (Snowflake dialect)
+        run: sqlfluff parse sql --dialect snowflake
+      # Add SonarQube Cloud as a required check after connecting the GitHub repository.
+      # Add a separate CD workflow with Snowflake CLI + OIDC after authentication is configured.
